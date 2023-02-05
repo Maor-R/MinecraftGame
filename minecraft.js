@@ -27,9 +27,7 @@ const wood = document.getElementById("wood").getElementsByTagName("span")[0];
 const water = document.getElementById("water").getElementsByTagName("span")[0];
 const dirt = document.getElementById("dirt").getElementsByTagName("span")[0];
 const grass = document.getElementById("grass").getElementsByTagName("span")[0];
-const bricksVariation = document
-  .getElementById("bricks_variation")
-  .getElementsByTagName("span")[0];
+const bricksVariation = document.getElementById("bricks_variation").getElementsByTagName("span")[0];
 const rock = document.getElementById("rock").getElementsByTagName("span")[0];
 
 const restartGameBtn = document.getElementById("restartGame");
@@ -58,7 +56,33 @@ function startGame() {
   welcomeScreen.style.cssText = "display: none";
 }
 function restartGame() {
-  window.location = window.location;
+  // window.location = window.location;
+if (lastToolElement !== undefined) {
+  lastToolElement.style.borderColor = DEFAULT_BORDER_COLOR;
+}
+if (lastMaterial !== undefined) {
+  lastMaterial.style.borderColor = DEFAULT_BORDER_COLOR;
+}
+  currentTool = "";
+
+  dirtCnt = 0;
+  grassCnt = 0;
+  woodCnt = 0;
+  leafCnt = 0;
+  rockCnt = 0;
+  bricksVariationCnt = 0;
+  waterCnt = 0;
+  mode = "";
+  tileToAdd = "";
+  lastTileRemove = "";
+  addTileType = "";
+  iIndexLastTileRemove;
+  jIndexLastTileRemove;
+  lastToolElement = undefined;
+  lastMaterial = undefined;
+
+  initGame();
+
 }
 
 function openInstructions() {
