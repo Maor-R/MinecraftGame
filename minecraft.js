@@ -122,15 +122,14 @@ function removeTile(event) {
   if (this.style.backgroundImage !== "")
     tileName = this.style.backgroundImage.split("/")[3].split(".")[0];
 
-  i = Number(event.target.style.gridRow);
-  j = Number(event.target.style.gridColumn);
-
+  i = Number(event.target.style.gridRow.split('/')[0]);
+  j = Number(event.target.style.gridColumn.split('/')[0]);
+  
   if (mode === ADD_TILE) {
     addTile(i, j, event, tileToAdd);
 
     return;
-  }
-
+  } 
   switch (tileName) {
     case GRASS:
       if (currentTool === SHOVEL) {
@@ -180,7 +179,7 @@ function tryToRemoveTile(i, j, e, material) {
     (jIsRange(j + 1) && gameAreaMat[i][j + 1] === undefined) ||
     (iIsRange(i + 1) && gameAreaMat[i + 1][j] === undefined) ||
     (iIsRange(i - 1) && gameAreaMat[i - 1][j] === undefined)
-  ) {
+  ) { 
     e.target.style.backgroundImage = "";
     gameAreaMat[i][j] = undefined;
     iIndexLastTileRemove = i;
