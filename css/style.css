@@ -188,12 +188,17 @@ span {
   text-align: center;
   background-position: center center;
   background-size: cover;
-
   background-image: url(../assets/images/main_screen.JPG);
 }
 
+.title{
+  padding-top: 4vh;
+  font-size: 4rem;
+  font-weight: 400;
+  color: white;
+}
 .main-buttons {
-  margin-top: 20vh;
+  margin-top: 7vh;
 }
 
 .welcome-screen button,
