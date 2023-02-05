@@ -15,13 +15,11 @@ body {
   height: 100vh;
   width: 20vw;
   background-color: black;
-  /* margin-left: auto; */
   justify-items: center;
   align-content: center;
   justify-content: center;
   padding-top: 10vh;
   padding-bottom: 3vh;
-
   position: absolute;
   right: 0;
   top: 0;
@@ -203,7 +201,6 @@ span {
   display: block;
   margin-left: auto;
   margin-right: auto;
-
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   width: 9vw;
@@ -218,7 +215,6 @@ span {
 
 .instructions {
   justify-content: center;
-
   width: 33vw;
   height: 45vh;
   z-index: 44;
@@ -238,6 +234,8 @@ span {
   right: auto;
   transform: translate(-50%, -50%);
   padding: 1rem;
+
+  overflow: auto;
 }
 
 .instructions p {
@@ -248,4 +246,87 @@ span {
 
 .instructions button {
   margin-top: 2rem;
+}
+
+.description-images{
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  row-gap: 0.9rem;
+}
+
+.item-description{
+  background-position: center center;
+  background-size: cover;
+  width: 3rem;
+  height: 3rem;
+  align-self: center;
+}
+
+.item-description:nth-child(1){
+  background-image: url(../assets/images/dirt.webp);
+  grid-area: 1 / 1 / 1 / 1;
+}
+
+.item-description:nth-child(2){
+  background-image: url(../assets/images/shovel.webp);
+  grid-area: 1 / 2 / 1 / 2;
+}
+
+.item-description:nth-child(3){
+  background-image: url(../assets/images/grass.webp);
+  grid-area: 2 / 1 / 2 / 1;
+}
+
+.item-description:nth-child(4){
+  background-image: url(../assets/images/shovel.webp);
+  grid-area: 2 / 2 / 2 / 2;
+}.item-description:nth-child(5){
+  background-image: url(../assets/images/rock.webp);
+  grid-area: 3 / 1 / 3 / 1;
+}
+
+.item-description:nth-child(6){
+  background-image: url(../assets/images/pickaxe.webp);
+  grid-area: 3 / 2 / 3 / 2;
+}
+
+.item-description:nth-child(7){
+  background-image: url(../assets/images/bricks_variation.webp);
+  grid-area: 4 / 1 / 4 / 1;
+}
+
+.item-description:nth-child(8){
+  background-image: url(../assets/images/pickaxe.webp);
+  grid-area: 4 / 2 / 4 / 2;
+}
+.item-description:nth-child(9){
+  background-image: url(../assets/images/wood.webp);
+  grid-area: 5 / 1 / 5 / 1;
+}
+
+.item-description:nth-child(10){
+  background-image: url(../assets/images/axe.webp);
+  grid-area: 5 / 2 / 5 / 2;
+}
+
+.item-description:nth-child(11){
+  background-image: url(../assets/images/leaf.webp);
+  grid-area: 6 / 1 / 6 / 1;
+}
+
+.item-description:nth-child(12){
+  background-image: url(../assets/images/axe.webp);
+  grid-area: 6 / 2 / 6 / 2;
+}.item-description:nth-child(13){
+  background-image: url(../assets/images/water.webp);
+  grid-area: 7 / 1 / 7 / 1;
+}
+
+.item-description:nth-child(14){
+  background-image: url(../assets/images/water_bucket.webp);
+  grid-area: 7  / 2 / 7 / 2;
 }
