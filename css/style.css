@@ -168,9 +168,7 @@ span {
   background-position: center center;
   background-size: cover;
 
-  /* background-image: url(../assets/images/glowstone.webp); */
-  /* background-color: black; */
-  /* background-image: url(); */
+
 }
 
 .tile:hover {
@@ -234,7 +232,6 @@ span {
   background-size: cover;
   color: black;
   background-color: gainsboro;
-
   left: 50%;
   top: 50%;
   bottom: auto;
@@ -246,6 +243,7 @@ span {
 .instructions p {
   margin-top: 3rem;
   font-size: 1.6rem;
+  font-weight: 300;
 }
 
 .instructions button {
