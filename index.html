@@ -20,32 +20,32 @@
 
     <div class="container">
 
-        <div id="gameArea" class="game-area"> 
-               </div>
+        <div id="gameArea" class="game-area">
+        </div>
 
 
-    <div class="game-control">
-        <div id="pickaxe" class="item" onclick="setCurrentTool(event)"><span>Pickaxe</span></div>
-        <div id="shovel" class="item" onclick="setCurrentTool(event)"><span>Shovel</span></div>
-        <div id="axe" class="item" onclick="setCurrentTool(event)"><span>Axe</span></div>
-        <div id="waterBucket" class="item" onclick="setCurrentTool(event)"><span>Water Bucket</span></div>
+        <div class="game-control">
+            <div id="pickaxe" class="item" onclick="setCurrentTool(event)"><span>Pickaxe</span></div>
+            <div id="shovel" class="item" onclick="setCurrentTool(event)"><span>Shovel</span></div>
+            <div id="axe" class="item" onclick="setCurrentTool(event)"><span>Axe</span></div>
+            <div id="waterBucket" class="item" onclick="setCurrentTool(event)"><span>Water Bucket</span></div>
 
-        <div id="leaf" class="item-tile item cnt" onclick="changeMode(event)"><span id="leafCnt"></span></div>
-        <div id="wood" class="item-tile item cnt" onclick="changeMode(event)"><span></span></div>
-        <div id="water" class="item-tile item cnt" onclick="changeMode(event)"><span></span></div>
-        <div id="dirt" class="item-tile item cnt" onclick="changeMode(event)"><span></span></div>
-        <div id="grass" class="item-tile item cnt" onclick="changeMode(event)"><span></span></div>
-        <div id="bricks_variation" class="item-tile item cnt" onclick="changeMode(event)"><span></span></div>
-        <div id="rock" class="item-tile item cnt" onclick="changeMode(event)"><span></span></div>
-
-
-        <button id="restartGame" onclick="restartGame()" class="btn-control">Restart Game</button>
-        <button id="endGame" class="btn-control" onclick="endGame()">End Game</button>
+            <div id="leaf" class="item-tile item cnt" onclick="changeMode(event)"><span id="leafCnt"></span></div>
+            <div id="wood" class="item-tile item cnt" onclick="changeMode(event)"><span></span></div>
+            <div id="water" class="item-tile item cnt" onclick="changeMode(event)"><span></span></div>
+            <div id="dirt" class="item-tile item cnt" onclick="changeMode(event)"><span></span></div>
+            <div id="grass" class="item-tile item cnt" onclick="changeMode(event)"><span></span></div>
+            <div id="bricks_variation" class="item-tile item cnt" onclick="changeMode(event)"><span></span></div>
+            <div id="rock" class="item-tile item cnt" onclick="changeMode(event)"><span></span></div>
 
 
+            <button id="restartGame" onclick="restartGame()" class="btn-control">Restart Game</button>
+            <button id="endGame" class="btn-control" onclick="endGame()">End Game</button>
 
-    
-    </div>
+
+
+
+        </div>
 
 
 
@@ -58,25 +58,25 @@
             <li>Note! if you get 6-6 you will lose all points from "Current" and the turn will go to your opponent.</li>
             <li>If you managed to reach exactly the target score - you win! If you passed it - you lose.</li>
         </ul> -->
-   <div class="main-buttons">
-    <button id="startGame" onclick="startGame()">Start Game</button>
-    <button id="howToPlay" onclick="openInstructions()">How To Play</button>
+        <div class="main-buttons">
+            <button id="startGame" onclick="startGame()">Start Game</button>
+            <button id="howToPlay" onclick="openInstructions()">How To Play</button>
 
-   </div>
+        </div>
 
 
 
     </div>
 
-    <div  id="instructions" class="instructions">
-<p>
-    instructions:<br>
-    <Minecraft is a game where you can put together a world to your liking.<br>
-    The only limit is your own creativity!<br>
-    To mine a tile select the appropriate tool and click on the desired tile.<br>
-    To build a tile select the inventory and click on a vacant tile (only the last tile!).<br>
-</p>
-<button id="close" onclick="closeInstructions()">Close</button>
+    <div id="instructions" class="instructions">
+        <p>
+            instructions:<br>
+            <Minecraft is a game where you can put together a world to your liking.<br>
+                The only limit is your own creativity!<br>
+                To mine a tile select the appropriate tool and click on the desired tile.<br>
+                To build a tile select the inventory and click on a vacant tile (only the last tile!).<br>
+        </p>
+        <button id="close" onclick="closeInstructions()">Close</button>
 
     </div>
 </body>
