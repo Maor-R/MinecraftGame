@@ -1,11 +1,9 @@
 const ROWS = 21;
 const COLUMNS = 27;
-
 const PICKAXE = "pickaxe";
 const SHOVEL = "shovel";
 const AXE = "axe";
 const WATER_BUCKET = "waterBucket";
-
 const DIRT = "dirt";
 const GRASS = "grass";
 const WOOD = "wood";
@@ -29,13 +27,12 @@ const dirt = document.getElementById("dirt").getElementsByTagName("span")[0];
 const grass = document.getElementById("grass").getElementsByTagName("span")[0];
 const bricksVariation = document.getElementById("bricks_variation").getElementsByTagName("span")[0];
 const rock = document.getElementById("rock").getElementsByTagName("span")[0];
-
 const restartGameBtn = document.getElementById("restartGame");
 const endGameBtn = document.getElementById("endGame");
 const instructions = document.getElementById("instructions");
-let currentTool;
-let gameAreaMat = Array.from(Array(ROWS), () => new Array(COLUMNS));
 
+let gameAreaMat = Array.from(Array(ROWS), () => new Array(COLUMNS));
+let currentTool;
 let dirtCnt = 0;
 let grassCnt = 0;
 let woodCnt = 0;
@@ -52,19 +49,20 @@ let jIndexLastTileRemove;
 let lastToolElement = undefined;
 let lastMaterial = undefined;
 
+
 function startGame() {
   welcomeScreen.style.cssText = "display: none";
 }
+
 function restartGame() {
-  // window.location = window.location;
 if (lastToolElement !== undefined) {
   lastToolElement.style.borderColor = DEFAULT_BORDER_COLOR;
 }
 if (lastMaterial !== undefined) {
   lastMaterial.style.borderColor = DEFAULT_BORDER_COLOR;
 }
-  currentTool = "";
 
+  currentTool = "";
   dirtCnt = 0;
   grassCnt = 0;
   woodCnt = 0;
@@ -80,8 +78,7 @@ if (lastMaterial !== undefined) {
   jIndexLastTileRemove;
   lastToolElement = undefined;
   lastMaterial = undefined;
-
-  initGame();
+  drawScreen();
 
 }
 
@@ -143,6 +140,7 @@ function removeTile(event) {
   let tileName;
   let i;
   let j;
+  
   if (this.style.backgroundImage !== "")
     tileName = this.style.backgroundImage.split("/")[3].split(".")[0];
 
@@ -151,7 +149,6 @@ function removeTile(event) {
   
   if (mode === ADD_TILE) {
     addTile(i, j, event, tileToAdd);
-
     return;
   } 
   switch (tileName) {
@@ -202,8 +199,7 @@ function tryToRemoveTile(i, j, e, material) {
     (jIsRange(j - 1) && gameAreaMat[i][j - 1] === undefined) ||
     (jIsRange(j + 1) && gameAreaMat[i][j + 1] === undefined) ||
     (iIsRange(i + 1) && gameAreaMat[i + 1][j] === undefined) ||
-    (iIsRange(i - 1) && gameAreaMat[i - 1][j] === undefined)
-  ) { 
+    (iIsRange(i - 1) && gameAreaMat[i - 1][j] === undefined)) { 
     e.target.style.backgroundImage = "";
     gameAreaMat[i][j] = undefined;
     iIndexLastTileRemove = i;
@@ -264,6 +260,8 @@ function jIsRange(j) {
   return j >= 1 && j < COLUMNS;
 }
 
+
+
 function buildGround() {
   for (let i = 15; i < ROWS; i++) {
     for (let j = 1; j < COLUMNS; j++) {
@@ -292,10 +290,8 @@ function buildWall() {
     for (let j = COLUMNS / 3 - (i - 10); sumTile-- > 0; j++) {
       let element = document.createElement("div");
       element.addEventListener("click", removeTile);
-
       element.style.backgroundImage = "url(./assets/images/rock.webp)";
       gameAreaMat[i][j] = ROCK;
-
       element.style.gridRow = i;
       element.style.gridColumn = j;
       element.classList = "tile";
@@ -313,10 +309,8 @@ function buildRiver() {
       }
       let element = document.createElement("div");
       element.addEventListener("click", removeTile);
-
       element.style.backgroundImage = "url(./assets/images/water.webp)";
       gameAreaMat[i][j] = WATER;
-
       element.style.gridRow = i;
       element.style.gridColumn = j;
       element.classList = "tile";
@@ -347,10 +341,8 @@ function buildTree() {
     for (; sumTile-- > 0; j++) {
       let element = document.createElement("div");
       element.addEventListener("click", removeTile);
-
       element.style.backgroundImage = bgi;
       gameAreaMat[i][j] = bg;
-
       element.style.gridRow = i;
       element.style.gridColumn = j;
       element.classList = "tile";
@@ -383,7 +375,7 @@ function buildBrickWall() {
   }
 }
 
-function initGame() {
+function drawScreen() {
   buildGround();
   buildWall();
   buildTree();
@@ -392,4 +384,4 @@ function initGame() {
 }
 
 
-initGame();
+drawScreen();
