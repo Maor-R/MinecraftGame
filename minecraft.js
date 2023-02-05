@@ -15,6 +15,7 @@ const ADD_TILE = "add_tile";
 const REMOVE_TILE = "remove_tile";
 const DEFAULT_BORDER_COLOR = "#91917a";
 const CHOICE_BORDER_COLOR = "gold";
+const CLASS_TILE = "tile";
 
 const pickaxeTool = document.getElementById("pickaxe");
 const shovelTool = document.getElementById("shovel");
@@ -249,9 +250,10 @@ function tryToRemoveTile(i, j, e, material) {
         break;
       default:
         break;
-    } //switch
-  } //if
+    } 
+  } 
 }
+
 function iIsRange(i) {
   return i >= 1 && i < ROWS;
 }
@@ -260,128 +262,61 @@ function jIsRange(j) {
   return j >= 1 && j < COLUMNS;
 }
 
+function drawMap(iStart, iEnd, jStart, jEnd, tile){
+  for (let i = iStart; i < iEnd; i++) {
+    for (let j = jStart; j < jEnd; j++) {
 
-
-function buildGround() {
-  for (let i = 15; i < ROWS; i++) {
-    for (let j = 1; j < COLUMNS; j++) {
-      if (!((j >= 15 && j <= 17) || (j >= 23 && j <= 25))) {
         let element = document.createElement("div");
         element.addEventListener("click", removeTile);
-        if (i == 15) {
-          element.style.backgroundImage = "url(./assets/images/grass.webp)";
-          gameAreaMat[i][j] = GRASS;
-        } else {
-          element.style.backgroundImage = "url(./assets/images/dirt.webp)";
-          gameAreaMat[i][j] = DIRT;
-        }
+        element.style.backgroundImage = `url(./assets/images/${tile}.webp)`;
+        gameAreaMat[i][j] = tile;
         element.style.gridRow = i;
         element.style.gridColumn = j;
-        element.classList = "tile";
+        element.classList = CLASS_TILE;
         gameArea.appendChild(element);
-      }
+      
     }
   }
 }
 
-function buildWall() {
-  for (let i = 10; i < 15; i++) {
-    let sumTile = (i - 9) * 2 - 1;
-    for (let j = COLUMNS / 3 - (i - 10); sumTile-- > 0; j++) {
-      let element = document.createElement("div");
-      element.addEventListener("click", removeTile);
-      element.style.backgroundImage = "url(./assets/images/rock.webp)";
-      gameAreaMat[i][j] = ROCK;
-      element.style.gridRow = i;
-      element.style.gridColumn = j;
-      element.classList = "tile";
-      gameArea.appendChild(element);
-    }
-  }
+function drawScreen(){
+  //draw grass
+  drawMap(15 ,16 ,1 ,15 ,GRASS);
+  drawMap(15 ,16 ,18 ,23 ,GRASS);
+  drawMap(15 ,16 ,26 ,COLUMNS ,GRASS);
+
+  //draw dirt
+  drawMap(16 ,ROWS ,1 ,15 ,DIRT);
+
+  drawMap(16 ,ROWS ,18 ,23 ,DIRT);
+  drawMap(16 ,ROWS ,26 ,COLUMNS ,DIRT);
+
+  //draw water
+  drawMap(15 ,ROWS ,15 ,18 ,WATER);
+  drawMap(15 ,ROWS ,23 ,26 ,WATER);
+
+  //draw wood
+  drawMap(11 ,15 ,20 ,21 ,WOOD);
+  //draw leaf
+  drawMap(10 ,11 ,17 ,24 ,LEAF);
+  drawMap(9 ,10 ,18 ,23 ,LEAF);
+  drawMap(8 ,9 ,19 ,22 ,LEAF);
+  drawMap(7 ,8 ,20 ,21 ,LEAF);
+
+  //draw brick wall
+  drawMap(10 ,11 ,1 ,9 ,BRICKS_VARIATION);
+  drawMap(11 ,12 ,1 ,8 ,BRICKS_VARIATION);
+  drawMap(12 ,13 ,1 ,7 ,BRICKS_VARIATION);
+  drawMap(13 ,14 ,1 ,6 ,BRICKS_VARIATION);
+  drawMap(14 ,15 ,1 ,5 ,BRICKS_VARIATION);
+
+  //draw wall
+  drawMap(10 ,11 ,9 ,10 ,ROCK);
+  drawMap(11 ,12 ,8 ,11 ,ROCK);
+  drawMap(12 ,13 ,7 ,12 ,ROCK);
+  drawMap(13 ,14 ,6 ,13 ,ROCK);
+  drawMap(14 ,15 ,5 ,14 ,ROCK);
+
 }
-
-function buildRiver() {
-  for (let i = 15; i < ROWS; i++) {
-    let sumTile = 6;
-    for (let j = COLUMNS / 3 + 6; sumTile-- > 0; j++) {
-      if (j == COLUMNS / 3 + 9) {
-        j += 5;
-      }
-      let element = document.createElement("div");
-      element.addEventListener("click", removeTile);
-      element.style.backgroundImage = "url(./assets/images/water.webp)";
-      gameAreaMat[i][j] = WATER;
-      element.style.gridRow = i;
-      element.style.gridColumn = j;
-      element.classList = "tile";
-      gameArea.appendChild(element);
-    }
-  }
-}
-
-function buildTree() {
-  let start = 6;
-  let bg;
-  let bgi;
-  for (let i = 7; i < 15; i++) {
-    let sumTile;
-    let j;
-    if (i >= 5 && i <= 10) {
-      sumTile = (i - start) * 2 - 1;
-      j = COLUMNS - i;
-      bgi = "url(./assets/images/leaf.webp)";
-      bg = LEAF;
-    } else {
-      sumTile = 1;
-      j = COLUMNS - 7;
-      bgi = "url(./assets/images/wood.webp)";
-      bg = WOOD;
-    }
-
-    for (; sumTile-- > 0; j++) {
-      let element = document.createElement("div");
-      element.addEventListener("click", removeTile);
-      element.style.backgroundImage = bgi;
-      gameAreaMat[i][j] = bg;
-      element.style.gridRow = i;
-      element.style.gridColumn = j;
-      element.classList = "tile";
-      gameArea.appendChild(element);
-    }
-  }
-}
-
-function buildBrickWall() {
-  let start = 20;
-  let bgi;
-  for (let i = 10; i < 15; i++) {
-    let sumTile;
-    let j;
-
-    sumTile = (start-2) - i;
-    j = 1;
-    bgi = "url(./assets/images/bricks_variation.webp)";
-
-    for (; sumTile-- > 0; j++) {
-      let element = document.createElement("div");
-      gameAreaMat[i][j] = BRICKS_VARIATION;
-      element.addEventListener("click", removeTile);
-      element.style.backgroundImage = bgi;
-      element.style.gridRow = i;
-      element.style.gridColumn = j;
-      element.classList = "tile";
-      gameArea.appendChild(element);
-    }
-  }
-}
-
-function drawScreen() {
-  buildGround();
-  buildWall();
-  buildTree();
-  buildRiver();
-  buildBrickWall();
-}
-
-
 drawScreen();
+
